@@ -4,8 +4,8 @@
 // @description  Changes the color of tasks graded by a robot if a teacher found the first robot-graded task.
 // @author       Covium
 // @match        *://backoffice.kodland.org/*/*/
-// @downloadURL  https://github.com/Covium/graded-by-you/raw/rated-by-you.user.js
-// @updateURL    https://github.com/Covium/graded-by-you/raw/rated-by-you.user.js
+// @downloadURL  https://github.com/Covium/graded-by-you/raw/graded-by-you.user.js
+// @updateURL    https://github.com/Covium/graded-by-you/raw/graded-by-you.user.js
 // ==/UserScript==
 
 function recolor() {
