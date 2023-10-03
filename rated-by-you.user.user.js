@@ -28,8 +28,8 @@ function recolor() {
         SPANs.push(LI_SPANs);
     }
 
-	// Changing cell's background color to blue if it is equal to maximum points
-	// after maximum + 1 was found in the same column.
+    // Changing cell's background color to blue if it is equal to maximum points
+    // after maximum + 1 was found in the same column.
     let grades = [];
     for (let y = 0; y < SPANs.length; y++) {
         for (let x = 0; x < SPANs[y].length; x++) {
@@ -52,17 +52,17 @@ function recolor() {
 (function() {
     'use strict';
 
-	// On-load call.
+    // On-load call.
     recolor();
 
-	// An observer that waits for the pan-loader between lesson data loads.
+    // An observer that waits for the pan-loader between lesson data loads.
     let observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutationRecord) {
             recolor();
         });
     });
 
-	// Linking an observer to the loader elemens. The observer waits for a style change.
+    // Linking an observer to the loader elemens. The observer waits for a style change.
     let target = document.getElementById('ajax-loader');
     observer.observe(target, { attributes : true, attributeFilter : ["style"] });
 })();
