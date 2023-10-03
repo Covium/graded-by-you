@@ -28,6 +28,8 @@ function recolor() {
         SPANs.push(LI_SPANs);
     }
 
+	// Changing cell's background color to blue if it is equal to maximum points
+	// after maximum + 1 was found in the same column.
     let grades = [];
     for (let y = 0; y < SPANs.length; y++) {
         for (let x = 0; x < SPANs[y].length; x++) {
