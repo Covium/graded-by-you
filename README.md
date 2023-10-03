@@ -7,4 +7,4 @@ Make sure you have userscripts manager installed & enabled in your browser. Most
 - [Tampermonkey](https://tampermonkey.net/) (Closed Source)
 - [Violent Monkey](https://violentmonkey.github.io/) (Open Source)
 
-Install a userscript by clicking **[here](https://github.com/Covium/graded-by-you/raw/main/rated-by-you.user.js)**.
+Install a userscript by clicking **[here](https://github.com/Covium/graded-by-you/raw/main/graded-by-you.user.js)**.
