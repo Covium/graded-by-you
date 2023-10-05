@@ -67,17 +67,19 @@ function recolor() {
 (function() {
     'use strict';
     
-    // On-load call.
-    recolor();
-    
-    // An observer that waits for the pan-loader between lesson data loads.
-    let observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutationRecord) {
-            recolor();
+    if (window.location.href.includes("group_")) {
+        // On-load call.
+        recolor();
+
+        // An observer that waits for the pan-loader between lesson data loads.
+        let observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutationRecord) {
+                recolor();
+            });
         });
-    });
-    
-    // Linking an observer to the loader elemens. The observer waits for a style change.
-    let target = document.getElementById('ajax-loader');
-    observer.observe(target, { attributes : true, attributeFilter : ["style"] });
+
+        // Linking an observer to the loader elemens. The observer waits for a style change.
+        let target = document.getElementById('ajax-loader');
+        observer.observe(target, { attributes: true, attributeFilter: ["style"] });
+    }
 })();
