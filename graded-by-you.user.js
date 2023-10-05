@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Graded by YOU / Kodland BackOffice
-// @version      1.3
+// @version      1.3.1
 // @description  Changes the color of tasks graded by a robot if a teacher found the first robot-graded task.
 // @grant        GM_addElement
 // @author       Covium
@@ -11,7 +11,7 @@
 
 function firstCheckingPageInjection() {
     // Restoring dropdown select menus full width.
-    let input_field = document.getElementById("test2").children[0].children[0].children[0].children[0];
+    const input_field = document.getElementById("test2").children[0].children[0].children[0].children[0];
     input_field.style.paddingRight = "2%";
 
     // Updating the legend on top of the table.
@@ -75,8 +75,8 @@ function updateCheckingPageTable() {
         updateCheckingPageTable();
 
         // An observer that waits for the pan-loader between lesson data loads.
-        let target = document.getElementById('ajax-loader');
-        let observer = new MutationObserver(function () {
+        const target = document.getElementById('ajax-loader');
+        const observer = new MutationObserver(function () {
             if (target.style.display === 'none') updateCheckingPageTable();
         });
 
