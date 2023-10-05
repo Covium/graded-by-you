@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Graded by YOU / Kodland BackOffice
-// @version      1.2.2
+// @version      1.3
 // @description  Changes the color of tasks graded by a robot if a teacher found the first robot-graded task.
 // @grant        GM_addElement
 // @author       Covium
@@ -9,22 +9,24 @@
 // @downloadURL  https://github.com/Covium/graded-by-you/raw/graded-by-you.user.js
 // ==/UserScript==
 
-function checkingPageInjection() {
+function firstCheckingPageInjection() {
+    // Restoring dropdown select menus full width.
+    let input_field = document.getElementById("test2").children[0].children[0].children[0].children[0];
+    input_field.style.paddingRight = "2%";
+
     // Updating the legend on top of the table.
-    let div_row = document.getElementById("test2").children[0].children[0];
-    let legend_boxes = div_row.getElementsByClassName("yellow")[0].parentElement;
+    const legend_boxes = document.getElementById("test2").children[0].children[0].getElementsByClassName("yellow")[0].parentElement;
     legend_boxes.style.position = "relative";
-    if (legend_boxes.children.length === 3) {
-        GM_addElement(legend_boxes, "div", {
-            style: "height: 20px; width: 20px; position: absolute; top: 50px; clip-path: polygon(100% 0, 0% 100%, 100% 100%); background: #3a7cec;"
-        });
-    }
-    
+    GM_addElement(legend_boxes, "div", {
+        style: "height: 20px; width: 20px; position: absolute; top: 50px; clip-path: polygon(100% 0, 0 100%, 100% 100%); background: #3a7cec;"
+    });
+}
+
+function updateCheckingPageTable() {
     // <ul> is the element that represents a list of grade boxes for a single student.
     const ULs = document.getElementById("table_body").getElementsByTagName("ul");
     
     // <span> is the element that contains the grade as a text.
-    // We need an element and not just text to manipulate its background.
     let SPANs = [];
     
     // Getting <span>s out of <ul>s to make a grade matrix.
@@ -68,15 +70,14 @@ function checkingPageInjection() {
     'use strict';
     
     if (window.location.href.includes("group_")) {
-        // On-load call.
-        checkingPageInjection();
+        // On-load calls.
+        firstCheckingPageInjection()
+        updateCheckingPageTable();
 
         // An observer that waits for the pan-loader between lesson data loads.
         let target = document.getElementById('ajax-loader');
         let observer = new MutationObserver(function () {
-            if (target.style.display === 'none') {
-                checkingPageInjection();
-            }
+            if (target.style.display === 'none') updateCheckingPageTable();
         });
 
         // Linking an observer to the loader elemens. The observer waits for a style change.
