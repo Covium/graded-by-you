@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Graded by YOU / Kodland BackOffice
-// @version      1.2.1
+// @version      1.2.2
 // @description  Changes the color of tasks graded by a robot if a teacher found the first robot-graded task.
 // @grant        GM_addElement
 // @author       Covium
@@ -9,7 +9,7 @@
 // @downloadURL  https://github.com/Covium/graded-by-you/raw/graded-by-you.user.js
 // ==/UserScript==
 
-function recolor() {
+function checkingPageInjection() {
     // Updating the legend on top of the table.
     let div_row = document.getElementById("test2").children[0].children[0];
     let legend_boxes = div_row.getElementsByClassName("yellow")[0].parentElement;
@@ -69,17 +69,17 @@ function recolor() {
     
     if (window.location.href.includes("group_")) {
         // On-load call.
-        recolor();
+        checkingPageInjection();
 
         // An observer that waits for the pan-loader between lesson data loads.
-        let observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutationRecord) {
-                recolor();
-            });
+        let target = document.getElementById('ajax-loader');
+        let observer = new MutationObserver(function () {
+            if (target.style.display === 'none') {
+                checkingPageInjection();
+            }
         });
 
         // Linking an observer to the loader elemens. The observer waits for a style change.
-        let target = document.getElementById('ajax-loader');
         observer.observe(target, { attributes: true, attributeFilter: ["style"] });
     }
 })();
