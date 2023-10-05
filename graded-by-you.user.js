@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Graded by YOU / Kodland BackOffice
-// @version      1.2
+// @version      1.2.1
 // @description  Changes the color of tasks graded by a robot if a teacher found the first robot-graded task.
 // @grant        GM_addElement
 // @author       Covium
