@@ -71,7 +71,7 @@ function updateCheckingPageTable() {
     
     if (window.location.href.includes("group_")) {
         // On-load calls.
-        firstCheckingPageInjection()
+        firstCheckingPageInjection();
         updateCheckingPageTable();
 
         // An observer that waits for the pan-loader between lesson data loads.
